@@ -104,6 +104,49 @@ const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_
   };
 
 
+  // DELETE LOAN
+  const deleteLoan = (id) => {
+    toast.loading("Deleting Loan ...");
+  
+    fetch(`http://127.0.0.1:5000/loan/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+      .then((resp) => resp.json())
+      .then((response) => {
+      
+        if (response.success) {
+          toast.dismiss(); 
+          toast.success(response.success); 
+          setOnChange(!onChange); 
+          navigate("/");
+        } else if (response.error) {
+          toast.dismiss();
+          toast.error(response.error); 
+        } else {
+          toast.dismiss();
+          toast.error("Failed to delete"); 
+        }
+      })
+      .catch((error) => {
+        toast.dismiss(); 
+        toast.error("Network error or failed to connect to server");
+        console.error("Error deleting loan:", error); 
+      });
+  };
+  
+
+  const data = {
+    loans,
+    setOnChange,
+    addLoan,
+    updateLoan,
+    deleteLoan,
+  };
+
 
     return <LoanContext.Provider value={data}>{children}</LoanContext.Provider>;
 };    
