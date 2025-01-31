@@ -152,3 +152,40 @@ def update_loan(loan_id):
             return jsonify({"success": "Loan updated successfully"}), 200
 
     return jsonify({"error": "Must be an admin to update a loan!"}), 404  
+
+
+# DELETE A LOAN
+@loan_bp.route("/loan/<int:loan_id>", methods=["DELETE"])
+@jwt_required()
+def delete_loan(loan_id):
+    current_user_id = get_jwt_identity()
+    user = Users.query.get(current_user_id)
+    claims = get_jwt()  
+
+    if claims.get('is_admin'):
+        loan = Loans.query.get(loan_id)
+        if loan:
+            db.session.delete(loan)
+            db.session.commit()
+            return jsonify({"success": "Loan Deleted successfully"}), 200
+        else:
+            return jsonify({"error": "Loan not found"}), 404
+
+    elif user:
+        loan = Loans.query.get(loan_id)
+        if not loan:
+            return jsonify({"error": "Loan not found"}), 404
+        
+        if loan.user_id != current_user_id:
+            return jsonify({"error": "You can only delete your own loans!"}), 403
+    
+        if loan.loan_status == "Paid-Off":
+            db.session.delete(loan)
+            db.session.commit()
+            return jsonify({"success": "Loan Deleted successfully"}), 200
+        else:
+            return jsonify({"error": "Loan must be Paid-Off to be deleted"}), 400
+
+    return jsonify({"error": "Must be an admin to delete a loan!"}), 406
+
+
