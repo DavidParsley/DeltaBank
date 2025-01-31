@@ -163,82 +163,53 @@ export const UserProvider = ({ children }) => {
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// DELETE USER
+const deleteUser = (userId) => {
+    toast.loading("Deleting user...");
+    
+    fetch(`http://127.0.0.1:5000/user/${userId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`, 
+      },
+    })
+      .then((resp) => resp.json())
+      .then((response) => {
+       
+        if (response.success) {
+          toast.dismiss(); 
+          toast.success(response.success);
+          
+          const updatedUsers = users.filter(user => user.id !== userId); 
+          setUsers(updatedUsers); 
+        } else if (response.error) {
+          toast.dismiss();
+          toast.error(response.error); 
+        } else {
+          toast.dismiss();
+          toast.error("Failed to delete"); 
+        }
+      })
+      .catch((error) => {
+        toast.dismiss(); 
+        toast.error("Network error or failed to connect to server");
+        console.error("Error deleting user:", error); 
+      });
+  };
+  
+
+    const data = {
+      authToken,
+      current_user,
+      current_admin,
+      users,
+      login,
+      logout,
+      addUser,
+      deleteUser,
+    };
+  
+    return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 
 }
