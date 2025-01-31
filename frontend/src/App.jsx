@@ -1,6 +1,7 @@
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import { LoanProvider } from "./context/LoanContext";
+import { UserProvider } from "./context/UserContext"
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
