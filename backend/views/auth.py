@@ -102,4 +102,41 @@ def login():
             return jsonify({"error": "Incorrect Admin Password"}), 404
     else:
         return jsonify({"error": "Email not found for both User or Admin"}), 404
-    
+
+
+# CURRENT USER
+@auth_bp.route("/current_user", methods=["GET"])
+@jwt_required()
+def current_user():
+    current_user_id = get_jwt_identity()
+    claims = get_jwt()  # This will retrieve the JWT claims
+
+    if claims.get('is_admin'):
+        admin = Admins.query.get(current_user_id)
+        if admin:
+            admin_data = {
+                'id': admin.id,
+                'first_name': admin.first_name,
+                'last_name': admin.last_name,
+                'email': admin.email,
+                'phone': admin.phone,
+                'is_admin': True  # Adding is_admin to the response
+            }
+            return jsonify(admin_data), 200
+        else:
+            return jsonify({"message": "Admin not found"}), 404
+
+    elif claims.get("is_user"):
+        user = Users.query.get(current_user_id)
+        if user:
+            user_data = {
+                'id': user.id,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'phone': user.phone,
+                'is_user': True  # Adding is_user to the response
+            }
+            return jsonify(user_data), 200
+    else:
+        return jsonify({"message": "User not found"}), 404
