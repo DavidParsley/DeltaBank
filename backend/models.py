@@ -44,6 +44,7 @@ class Admins(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     phone = db.Column(db.Integer, unique=True, nullable=False)
+    
 
 # TokenBlocklist Table
 class TokenBlocklist(db.Model):
