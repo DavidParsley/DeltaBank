@@ -396,3 +396,14 @@ body {
   color: black;
 }
 /* NoPage Component Styling ends here */
+
+/* FOOTER STYLING STARTS HERE */
+/* .Footer{
+  margin-top: auto;
+} */
+.Footer a:hover{
+  text-decoration: none;
+  color:  #a66cff;
+}
+
+/* FOOTER STYLING ENDS HERE */
