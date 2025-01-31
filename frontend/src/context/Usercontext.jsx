@@ -132,6 +132,35 @@ export const UserProvider = ({ children }) => {
   };
 
 
+  // ADD USER
+  const addUser = (first_name, last_name, phone, email, password) => {
+    toast.loading("Registering ... ");
+    fetch("http://127.0.0.1:5000/user", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name,
+        last_name,
+        phone,
+        email,
+        password,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((response) => {
+        if (response.success) {
+           toast.dismiss();
+           toast.success("User added successfully");
+           navigate("/login");
+        } else if (response.error) {
+           toast.dismiss();
+           toast.error(response.error);
+        }
+     })
+     
+  };
 
 
 
