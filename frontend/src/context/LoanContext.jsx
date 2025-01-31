@@ -34,5 +34,42 @@ export const LoanProvider = ({ children }) => {
     }, [authToken, onChange]);
   
 
+// ADD LOAN
+const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_id) => {
+    toast.loading("Processing... ");
+    fetch("http://127.0.0.1:5000/loan", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+         Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({
+        amount,
+        interest_rate,
+        loan_status,
+        start_date,
+        due_date,
+        user_id,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((response) => {
+        console.log(response);
+
+        if (response.success) {
+          toast.dismiss();
+          toast.success(response.success);
+          navigate("/");
+        } else if (response.error) {
+          toast.dismiss();
+          toast.error(response.error);
+        } else {
+          toast.dismiss();
+          toast.error("Failed to add");
+        }
+      });
+  };
+
+
     return <LoanContext.Provider value={data}>{children}</LoanContext.Provider>;
 };    
