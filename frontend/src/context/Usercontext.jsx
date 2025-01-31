@@ -90,6 +90,22 @@ export const UserProvider = ({ children }) => {
   };
 
 
+// FETCHING ALL USERS
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/users", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setUsers(response);
+        console.log(response)
+      });
+  }, []);
+
+
 
 
 
