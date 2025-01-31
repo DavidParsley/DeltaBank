@@ -14,7 +14,7 @@ export default function Login() {
     login(email, password);
   }
   return (
-    <div class="font-[sans-serif] max-sm:px-4">
+    <div class="font-[sans-serif] max-sm:px-4 mt-10">
       <div class="min-h-screen flex flex-col items-center justify-center">
         <div class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div class="md:max-w-md w-full px-4 py-4">

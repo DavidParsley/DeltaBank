@@ -20,7 +20,7 @@ export default function Register() {
   }
 
   return (
-    <div className="Register-form font-[sans-serif] max-w-4xl flex items-center mx-auto  p-4">
+    <div className="Register-form font-[sans-serif] max-w-4xl flex items-center mx-auto  p-4 mt-15">
       <div className="grid md:grid-cols-3 gap-6 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl ">
         <div className="Register-form-text max-md:order-1 flex flex-col justify-center md:space-y-16 space-y-8 max-md:mt-16 min-h-full b lg:px-8 px-4 py-4">
           <div>
