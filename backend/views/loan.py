@@ -112,4 +112,43 @@ def fetch_loan(loan_id):
 
         return jsonify(loan_data)
     
-    return jsonify({"error": f'Loan selected is not assigned to You'}), 406        
+    return jsonify({"error": f'Loan selected is not assigned to You'}), 406 
+
+
+# UPDATE A LOAN
+@loan_bp.route("/loan/<int:loan_id>", methods=["PATCH"])
+@jwt_required()
+def update_loan(loan_id):
+    # current_user_id = get_jwt_identity()
+    claims = get_jwt()  
+
+    if claims.get('is_admin'):
+        loan = Loans.query.get(loan_id)
+        if loan:
+
+            data = request.get_json()
+            amount = data.get('amount', loan.amount)
+            interest_rate = data.get('interest_rate', loan.interest_rate)
+            loan_status = data.get('loan_status', loan.loan_status)
+            # start_date = data.get('start_date', loan.start_date)
+            due_date = data.get('due_date', loan.due_date)  
+            # user_id = data.get('user_id', loan.user_id)
+
+            # check_user_id = Users.query.get(user_id)
+
+            # if not check_user_id:
+            #     return jsonify({"error": "User doesn't exist"}), 404  
+            
+            # start_date = datetime.strptime(start_date, "%m-%d-%Y").date()
+            due_date = datetime.strptime(due_date, "%Y-%m-%d").date()
+            loan.amount = amount
+            loan.interest_rate = interest_rate
+            loan.loan_status = loan_status
+            # loan.start_date = start_date
+            loan.due_date = due_date
+            # loan.user_id = user_id
+
+            db.session.commit()
+            return jsonify({"success": "Loan updated successfully"}), 200
+
+    return jsonify({"error": "Must be an admin to update a loan!"}), 404  
