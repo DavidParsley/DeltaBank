@@ -106,6 +106,30 @@ export const UserProvider = ({ children }) => {
   }, []);
 
 
+  // FETCH CURRENT USER
+  useEffect(() => {
+    if (authToken) {
+      fetchCurrentUser();
+    }
+  }, [authToken]);
+
+  const fetchCurrentUser = () => {
+    fetch("http://127.0.0.1:5000/current_user", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.is_admin) {
+          setCurrentAdmin(response);
+        } else {
+          setCurrentUser(response);
+        }
+      });
+  };
 
 
 
