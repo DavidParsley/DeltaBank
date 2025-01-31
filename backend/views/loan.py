@@ -82,3 +82,34 @@ def fetch_loans():
             return jsonify(loan_list)
         else:
             return jsonify({"error": "User not found"}), 404    
+        
+
+# FETCH A SINGLE LOAN RELATED TO THE CURRENT USER LOGED IN
+@loan_bp.route("/loan/<int:loan_id>", methods=["GET"])
+@jwt_required()
+def fetch_loan(loan_id):
+    current_user_id = get_jwt_identity()
+    loan = Loans.query.filter_by(id=loan_id, user_id=current_user_id).first()
+
+    if loan:
+        loan_data = {
+            "id": loan.id,
+            "amount": loan.amount,
+            "interest_rate": loan.interest_rate,
+            "loan_status": loan.loan_status,
+            "start_date": loan.start_date,
+            "due_date": loan.due_date,
+            # "created_at": loan.created_at,
+            "user_id": {
+                "id": loan.users.id,
+                "First Name": loan.users.first_name,
+                "Last Name": loan.users.last_name,
+                "Email": loan.users.email,
+                "Phone": loan.users.phone
+            }
+          
+        }
+
+        return jsonify(loan_data)
+    
+    return jsonify({"error": f'Loan selected is not assigned to You'}), 406        
