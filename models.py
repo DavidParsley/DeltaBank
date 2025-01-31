@@ -19,3 +19,17 @@ class Users(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)  
     
     loans = db.relationship('Loans', backref='users', lazy=True)
+
+
+# Loan Table
+class Loans(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.Integer, nullable=False)
+    interest_rate = db.Column(db.Integer, nullable=False)
+    loan_status = db.Column(db.String(50), nullable=False)  
+    start_date = db.Column(db.Date, nullable=False)
+    due_date = db.Column(db.Date, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)  
+    
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
