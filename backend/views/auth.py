@@ -140,3 +140,14 @@ def current_user():
             return jsonify(user_data), 200
     else:
         return jsonify({"message": "User not found"}), 404
+
+
+# LOG OUT CURRENT USER
+@auth_bp.route("/logout", methods=["DELETE"])
+@jwt_required()
+def logout():
+    jti = get_jwt()["jti"]
+    now = datetime.now(timezone.utc)
+    db.session.add(TokenBlocklist(jti=jti, created_at=now))
+    db.session.commit()
+    return jsonify({"success": "Logged Out successfully"}), 200
