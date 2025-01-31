@@ -269,3 +269,19 @@ body {
 }
 
 /* HOME STYLING ENDS HERE */
+
+
+/* REGISTER FORM STYLING STARTS HERE */
+.Register-form-text{
+  background-color:  #d0f500d7;
+  color: black;
+  font-size: large;
+
+}
+
+.Register-form-text :hover{
+  color: #914df8;
+
+}
+
+/* REGISTER FORM STYLING ENDS HERE */
