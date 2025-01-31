@@ -40,3 +40,45 @@ def add_loan():
         db.session.add(new_loan)
         db.session.commit()
         return jsonify({"success":"Loan added successfully"}), 201
+    
+
+# ADMIN FETCHING ALL LOANS IN THE DB  and USER FETCHING ALL LOANS RELATED TO THEM WHILE LOGED IN
+@loan_bp.route("/loans", methods=["GET"])
+@jwt_required()
+def fetch_loans():
+    current_user_id = get_jwt_identity()
+    claims = get_jwt()  
+
+    if claims.get('is_admin'):  
+        loans = Loans.query.all()
+        loan_list = []
+        for loan in loans:
+            loan_list.append({     
+                "id": loan.id,
+                "amount": loan.amount,
+                "interest_rate": loan.interest_rate,
+                "loan_status": loan.loan_status,
+                "start_date": loan.start_date,
+                "due_date": loan.due_date,
+                "user_id": {"id": loan.users.id, "First Name": loan.users.first_name, "Last Name": loan.users.last_name, "Email": loan.users.email, "Phone": loan.users.phone}
+            })
+        return jsonify(loan_list)
+
+    else: 
+        user = Users.query.get(current_user_id)
+        if user:
+            loans = Loans.query.filter_by(user_id=current_user_id).all()
+            loan_list = []
+            for loan in loans:
+                loan_list.append({     
+                    "id": loan.id,
+                    "amount": loan.amount,
+                    "interest_rate": loan.interest_rate,
+                    "loan_status": loan.loan_status,
+                    "start_date": loan.start_date,
+                    "due_date": loan.due_date,
+                    "user_id": {"id": loan.users.id, "First Name": loan.users.first_name, "Last Name": loan.users.last_name, "Email": loan.users.email, "Phone": loan.users.phone}
+                })
+            return jsonify(loan_list)
+        else:
+            return jsonify({"error": "User not found"}), 404    
