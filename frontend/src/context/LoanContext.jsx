@@ -71,5 +71,39 @@ const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_
   };
 
 
+  // UPDATE LOAN
+  const updateLoan = (id, updated_amount, updated_interest_rate, updated_loan_status, updated_due_date) => {
+    
+    fetch(`http://127.0.0.1:5000/loan/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({
+        amount: updated_amount,
+        interest_rate: updated_interest_rate,
+        loan_status: updated_loan_status,
+        due_date: updated_due_date,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((response) => {
+        if (response.success) {
+          toast.success("Loan Updated ");
+          navigate("/");
+          setOnChange(!onChange)
+        } else if (response.error) {
+          toast.error("Loan Not Updated ");
+        } else {
+          alert("Failed to update");
+        }
+      })
+      .catch((error) => console.error("Error updating entry:", error));
+    console.log("Updating entry");
+  };
+
+
+
     return <LoanContext.Provider value={data}>{children}</LoanContext.Provider>;
 };    
