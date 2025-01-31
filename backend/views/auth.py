@@ -55,7 +55,7 @@ def login():
                         padding-bottom: 20px;
                     }}
                     .header h1 {{
-                        color: #28a745;
+                        color: #11172b;
                         font-size: 24px;
                     }}
                     .body-content {{
@@ -120,7 +120,7 @@ def current_user():
                 'last_name': admin.last_name,
                 'email': admin.email,
                 'phone': admin.phone,
-                'is_admin': True  # Adding is_admin to the response
+                'is_admin': True 
             }
             return jsonify(admin_data), 200
         else:
@@ -135,7 +135,7 @@ def current_user():
                 'last_name': user.last_name,
                 'email': user.email,
                 'phone': user.phone,
-                'is_user': True  # Adding is_user to the response
+                'is_user': True 
             }
             return jsonify(user_data), 200
     else:

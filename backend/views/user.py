@@ -112,3 +112,49 @@ def register_user():
         mail.send(msg)
         
         return jsonify({"msg": "User Registered Successfully"}), 200
+    
+# FETCH ALL USERS
+@user_bp.route("/users")
+def fetch_users():
+    users = Users.query.all() 
+    user_list = []
+
+   
+    for user in users:
+        user_list.append({
+            "id": user.id,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone": user.phone,
+            "email": user.email
+        })
+
+    
+    return jsonify(user_list)
+
+
+
+# DELETE A USER
+@user_bp.route("/user/<int:user_id>", methods=["DELETE"])
+@jwt_required()
+def delete_user(user_id):
+    current_user_id = get_jwt_identity()
+    claims = get_jwt()
+
+    if claims.get('is_admin'):
+        user_to_delete = Users.query.get(user_id)
+
+        if not user_to_delete:
+            return jsonify({"error": "User not found"}), 404
+        
+        loans_to_delete = Loans.query.filter_by(user_id=user_id).all()
+        for loan in loans_to_delete:
+            db.session.delete(loan)
+
+        db.session.delete(user_to_delete)
+        db.session.commit()
+
+        return jsonify({"success": "User Deleted successfully"}), 200
+
+    return jsonify({"error": "Must be an admin to delete a user!"}), 403
+
