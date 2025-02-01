@@ -281,7 +281,7 @@ export default function Home() {
                                 >
                                   {loan.loan_status}
                                 </span>
-                                <button className="bg-a66cff text-white font-medium py-2 px-4 rounded-lg transition-colors hover:bg-indigo-700">
+                                <button className="bg-a66cff text-black font-medium py-2 px-4 rounded-lg transition-colors bg-[#d0f500d7] hover:bg-indigo-700  hover:text-white">
                                   <Link to={`/singleloan/${loan.id}`}>View Details</Link>
                                 </button>
                               </div>
