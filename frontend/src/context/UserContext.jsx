@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
   const [current_user, setCurrentUser] = useState(null);
   const [current_admin, setCurrentAdmin] = useState(null);
   const [users, setUsers] = useState([])
-  // const [onChange, setOnChange] = useState(true);
+  const [onChange, setOnChange] = useState(true);
 
 // LOGIN
   const login = (email, password) => {
@@ -111,7 +111,7 @@ export const UserProvider = ({ children }) => {
     if (authToken) {
       fetchCurrentUser();
     }
-  }, [authToken]);
+  }, [authToken,onChange]);
 
   const fetchCurrentUser = () => {
     fetch("http://127.0.0.1:5000/current_user", {
@@ -163,6 +163,37 @@ export const UserProvider = ({ children }) => {
   };
 
 
+    // UPDATE  USER
+    const updateUser = (updated_phone, updated_email, updated_password) => {
+      fetch("http://127.0.0.1:5000/user/update", {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({
+          phone: updated_phone,
+          email: updated_email,
+          password: updated_password || "",
+        }),
+      })
+        .then((resp) => resp.json())
+        .then((response) => {
+          if (response.success) {
+            toast.success("Updated successfully");
+            setOnChange(!onChange);
+            navigate("/profile");
+          } else if (response.error) {
+            toast.error("Details Not Updated");
+          } else {
+            alert("Failed to update");
+          }
+        })
+        .catch((error) => console.error("Error updating entry:", error));
+      console.log("Updating entry");
+    };
+
+
 // DELETE USER
 const deleteUser = (userId) => {
     toast.loading("Deleting user...");
@@ -207,6 +238,7 @@ const deleteUser = (userId) => {
       login,
       logout,
       addUser,
+      updateUser,
       deleteUser,
     };
   
