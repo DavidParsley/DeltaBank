@@ -171,8 +171,8 @@ export default function Home() {
           {/* For admin users */}
           {current_admin && !current_user ? (
             <div className="mt-16">
-              <div className="welcome-container bg-white p-6 rounded-xl shadow-lg max-w-4xl mx-auto mb-8">
-                <div className="flex items-center gap-4">
+              <div className="welcome-container bg-white p-6 rounded-xl shadow-lg max-w-lg mx-auto mb-8 text-center">
+                <div className="flex justify-center gap-4">
                   {" "}
                   {/* Use gap for spacing */}
                   <h1 className="text-3xl font-semibold text-gray-900 hover:text-[#a66cff]">
