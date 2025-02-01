@@ -27,7 +27,7 @@ export default function Navbar() {
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="w-13 h-13 rounded-full border-2 border-amber-300  hover:bg-red-400 "
+                className="w-13 h-13 rounded-full border-2 border-[#d0f500d7]  hover:bg-red-400 "
                 src={`https://ui-avatars.com/api/?name=${encodeURIComponent(current_user?.first_name || current_admin?.first_name)}+${encodeURIComponent(current_user?.last_name || current_admin?.last_name)}&background=random`}
                 alt="user photo"
               />
