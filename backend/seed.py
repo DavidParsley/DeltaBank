@@ -22,7 +22,7 @@ with app.app_context():
     password = "1234"
     
     # Users seeds
-    users.append(Users(first_name="Hamza", last_name="Ali", email="hamza.ali@student.moringaschool.com", phone=1234567890, password=generate_password_hash(password)))
+    users.append(Users(first_name="Hamza", last_name="Ali", email="hamza.ali@gmail.com", phone=1234567890, password=generate_password_hash(password)))
     # users.append(Users(first_name="Elijah", last_name="Nzelu", email="elijah.nzelu@student.moringaschool.com", phone=1234567891, password=generate_password_hash(password)))
     # users.append(Users(first_name="Antony", last_name="Wambugu", email="antony.wambugu@student.moringaschool.com", phone=1234567892, password=generate_password_hash(password)))
     # users.append(Users(first_name="Abdimalik", last_name="Abdullahi", email="abdimalik.abdullahi@student.moringaschool.com", phone=1234567893, password=generate_password_hash(password)))

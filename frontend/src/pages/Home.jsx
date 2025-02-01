@@ -47,8 +47,8 @@ export default function Home() {
           {/* For normal users */}
           {current_user && !current_admin ? (
             <div className="mt-16">
-              <div className="welcome-container bg-white p-6 rounded-xl shadow-lg max-w-4xl mx-auto mb-8">
-                <div className="flex items-center gap-4">
+              <div className="welcome-container bg-white p-6 rounded-xl shadow-lg max-w-lg mx-auto mb-8 text-center">
+                <div className="flex justify-center gap-4">
                   {" "}
                   {/* Use gap for spacing */}
                   <h1 className="text-3xl font-semibold text-gray-900 hover:text-[#a66cff]">
@@ -181,7 +181,7 @@ export default function Home() {
                   {/* SVG Icon placed after the first name */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    height="30px" // You can adjust the size as per your design
+                    height="30px"
                     viewBox="0 -960 960 960"
                     width="3px"
                     fill="green"
