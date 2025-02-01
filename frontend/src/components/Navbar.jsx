@@ -50,7 +50,8 @@ export default function Navbar() {
                   {current_user && (
                     <>
                       {/* <li><Link to="/profile" className="block px-4 py-2 text-sm hover:text-purple-600">Profile</Link></li> */}
-                      {/* <li><Link to="/loans" className="block px-4 py-2 text-sm hover:text-green-600">Loans</Link></li> */}
+                      <li><Link to="/" className="block px-4 py-2 text-sm hover:bg-purple-100">Home</Link></li>
+                      <li><Link to="/profile" className="block px-4 py-2 text-sm hover:bg-purple-100">Profile</Link></li>
                       <li><Link to="/" onClick={logout} className="block px-4 py-2 text-sm hover:text-red-600">Sign out</Link></li>
                     </>
                   )}
@@ -61,7 +62,7 @@ export default function Navbar() {
                       <li><Link to="/profile" className="block px-4 py-2 text-sm hover:bg-purple-100">Profile</Link></li>
                       <li><Link to="/addloan" className="block px-4 py-2 text-sm hover:bg-purple-100">Grant Loan</Link></li>
                       <li><Link to="/accounts" className="block px-4 py-2 text-sm hover:bg-purple-100">Accounts</Link></li>
-                      <li><Link to="/" onClick={logout} className="block px-4 py-2 text-sm hover:bg-purple-100">Sign out</Link></li>
+                      <li><Link to="/" onClick={logout} className="block px-4 py-2 text-sm  hover:text-red-600">Sign out</Link></li>
                     </>
                   )}
                 </ul>
