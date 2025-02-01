@@ -47,8 +47,7 @@ body {
 }
 
 .Navbar-links a:hover {
-  color: #a66cff;
-  background-color: #edebf0;
+  
   font-style: italic;
 }
 
