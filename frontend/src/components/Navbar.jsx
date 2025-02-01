@@ -57,6 +57,7 @@ export default function Navbar() {
 
                   {current_admin && (
                     <>
+                      <li><Link to="/" className="block px-4 py-2 text-sm hover:bg-purple-100">Home</Link></li>
                       <li><Link to="/profile" className="block px-4 py-2 text-sm hover:bg-purple-100">Profile</Link></li>
                       <li><Link to="/addloan" className="block px-4 py-2 text-sm hover:bg-purple-100">Grant Loan</Link></li>
                       <li><Link to="/accounts" className="block px-4 py-2 text-sm hover:bg-purple-100">Accounts</Link></li>
