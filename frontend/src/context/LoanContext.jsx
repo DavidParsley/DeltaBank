@@ -16,7 +16,7 @@ export const LoanProvider = ({ children }) => {
 // FETCH LOANS
     useEffect(() => {
       if (authToken) {
-        fetch("http://127.0.0.1:5000/loans", {
+        fetch("https://deltabank.onrender.com/loans", {
           method: "GET",
           headers: {
             "Content-type": "application/json",
@@ -37,7 +37,7 @@ export const LoanProvider = ({ children }) => {
 // ADD LOAN
 const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_id) => {
     toast.loading("Processing... ");
-    fetch("http://127.0.0.1:5000/loan", {
+    fetch("https://deltabank.onrender.com/loan", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -74,7 +74,7 @@ const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_
   // UPDATE LOAN
   const updateLoan = (id, updated_amount, updated_interest_rate, updated_loan_status, updated_due_date) => {
     
-    fetch(`http://127.0.0.1:5000/loan/${id}`, {
+    fetch(`https://deltabank.onrender.com/loan/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -108,7 +108,7 @@ const addLoan = (amount, interest_rate, loan_status, start_date, due_date, user_
   const deleteLoan = (id) => {
     toast.loading("Deleting Loan ...");
   
-    fetch(`http://127.0.0.1:5000/loan/${id}`, {
+    fetch(`https://deltabank.onrender.com/loan/${id}`, {
       method: "DELETE",
       headers: {
         'Content-type': 'application/json',

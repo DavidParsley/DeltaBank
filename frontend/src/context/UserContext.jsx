@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 // LOGIN
   const login = (email, password) => {
     toast.loading("Logging you in ... ");
-    fetch("http://127.0.0.1:5000/login", {
+    fetch("https://deltabank.onrender.com/login", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
           sessionStorage.setItem("token", response.access_token);
           setAuthToken(response.access_token);
 
-          fetch("http://127.0.0.1:5000/current_user", {
+          fetch("https://deltabank.onrender.com/current_user", {
             method: "GET",
             headers: {
               "Content-type": "application/json",
@@ -64,7 +64,7 @@ export const UserProvider = ({ children }) => {
   // LOG OUT
   const logout = () => {
     toast.loading("Logging out ... ");
-    fetch("http://127.0.0.1:5000/logout", {
+    fetch("https://deltabank.onrender.com/logout", {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
@@ -92,7 +92,7 @@ export const UserProvider = ({ children }) => {
 
 // FETCHING ALL USERS
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/users", {
+    fetch("https://deltabank.onrender.com/users", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -114,7 +114,7 @@ export const UserProvider = ({ children }) => {
   }, [authToken,onChange]);
 
   const fetchCurrentUser = () => {
-    fetch("http://127.0.0.1:5000/current_user", {
+    fetch("https://deltabank.onrender.com/current_user", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -135,7 +135,7 @@ export const UserProvider = ({ children }) => {
   // ADD USER
   const addUser = (first_name, last_name, phone, email, password) => {
     toast.loading("Registering ... ");
-    fetch("http://127.0.0.1:5000/user", {
+    fetch("https://deltabank.onrender.com/user", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -165,7 +165,7 @@ export const UserProvider = ({ children }) => {
 
     // UPDATE  USER
     const updateUser = (updated_phone, updated_email, updated_password) => {
-      fetch("http://127.0.0.1:5000/user/update", {
+      fetch("https://deltabank.onrender.com/user/update", {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
@@ -198,7 +198,7 @@ export const UserProvider = ({ children }) => {
 const deleteUser = (userId) => {
     toast.loading("Deleting user...");
     
-    fetch(`http://127.0.0.1:5000/user/${userId}`, {
+    fetch(`https://deltabank.onrender.com/user/${userId}`, {
       method: "DELETE",
       headers: {
         'Content-type': 'application/json',
