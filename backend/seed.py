@@ -23,6 +23,8 @@ with app.app_context():
     
     # Users seeds
     users.append(Users(first_name="Hamza", last_name="Ali", email="hamza.ali@gmail.com", phone=1234567890, password=generate_password_hash(password)))
+    users.append(Users(first_name="Anne", last_name="Muriuki", email="anne.@gmail.com", phone=1234567822, password=generate_password_hash(password)))
+
     # users.append(Users(first_name="Elijah", last_name="Nzelu", email="elijah.nzelu@student.moringaschool.com", phone=1234567891, password=generate_password_hash(password)))
     # users.append(Users(first_name="Antony", last_name="Wambugu", email="antony.wambugu@student.moringaschool.com", phone=1234567892, password=generate_password_hash(password)))
     # users.append(Users(first_name="Abdimalik", last_name="Abdullahi", email="abdimalik.abdullahi@student.moringaschool.com", phone=1234567893, password=generate_password_hash(password)))
@@ -54,7 +56,6 @@ with app.app_context():
     # users.append(Users(first_name="Anthony", last_name="Mwaura", email="anthony.mwaura@student.moringaschool.com", phone=1234567819, password=generate_password_hash(password)))
     # users.append(Users(first_name="Suudi", last_name="Abdisalan1", email="suudi.abdisalan1@student.moringaschool.com", phone=1234567820, password=generate_password_hash(password)))
     # users.append(Users(first_name="Roselyne", last_name="Mwaniki", email="roselyne.mwaniki@student.moringaschool.com", phone=1234567821, password=generate_password_hash(password)))
-    # users.append(Users(first_name="Anne", last_name="Muriuki", email="anne.muriuki@student.moringaschool.com", phone=1234567822, password=generate_password_hash(password)))
     # users.append(Users(first_name="Kevin", last_name="Bett3", email="kevin.bett3@student.moringaschool.com", phone=1234567823, password=generate_password_hash(password)))
     # users.append(Users(first_name="Abdurizak", last_name="Abubakar", email="abdurizak.abubakar@student.moringaschool.com", phone=1234567824, password=generate_password_hash(password)))
     # users.append(Users(first_name="Elvis", last_name="Kuria", email="elvis.kuria@student.moringaschool.com", phone=1234567825, password=generate_password_hash(password)))
@@ -78,7 +79,7 @@ with app.app_context():
     
     # Loans seeds
     loans.append(Loans(amount=5000000, interest_rate=1.2, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-20", "%Y-%m-%d").date(), loan_status="Active", user_id=1))
-    # loans.append(Loans(amount=6000000, interest_rate=1.5, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-21", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
+    loans.append(Loans(amount=6000000, interest_rate=1.5, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-21", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
     # loans.append(Loans(amount=7500000, interest_rate=1.3, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-22", "%Y-%m-%d").date(), loan_status="Paid", user_id=3))
     # loans.append(Loans(amount=4500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-23", "%Y-%m-%d").date(), loan_status="Active", user_id=4))
     # loans.append(Loans(amount=9000000, interest_rate=1.2, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-24", "%Y-%m-%d").date(), loan_status="Active", user_id=5))
