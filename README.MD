@@ -100,7 +100,7 @@ If you'd like to contribute to the project, feel free to fork the repository and
 
 ### Demo Video Link
 
-- Video [https://drive.google.com/file/d/1WEZEhK0qsgJSbKXidSjAAs1XEatyjQEx/view?usp=sharing]
+- Video [https://www.loom.com/share/2e61f477e0784f69b64c0fffa4231ba3?sid=509e1a8c-a35f-4630-a5e2-d58b3aba823d]
 
 #### For any issues or questions, feel free to open an issue on GitHub or contact me directly at [davidparsleykakhayanga@gmail.com].
 
