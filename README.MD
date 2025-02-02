@@ -87,14 +87,16 @@ Copy
 Contributing:
 If you'd like to contribute to the project, feel free to fork the repository and submit a pull request. Please ensure that your code follows the existing style and passes all tests.
 
-# Known Bugs
+# Known Bugs:
 
-* No known bugs at this time.
+- Register Form: After the form is submitted, it doesn’t automatically redirect the user to the login page as expected.
+
+- Profile Page: The updated details are not reflected on the profile page as they should be.
 
 ### Live Server Links:
 
 * Backend Render [https://deltabank.onrender.com]
-* Frontend Vercel [https://deltabank.vercel.app/]
+* Frontend Vercel [https://delta-bank-2z461qcxd-david-parsleys-projects.vercel.app/]
 
 
 
