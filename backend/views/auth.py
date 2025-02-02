@@ -181,86 +181,86 @@ def update_info():
         if new_password:
             admin.password = new_password_hash
         db.session.commit()
-        # current_date = datetime.now().strftime("%d-%m-%Y")
-        # msg = Message('Account Details Updated', sender='david.kakhayanga@student.moringaschool.com', recipients=[email])
+        current_date = datetime.now().strftime("%d-%m-%Y")
+        msg = Message('Account Details Updated', sender='david.kakhayanga@student.moringaschool.com', recipients=[email])
 
-        # msg.html = f"""
-        #     <!DOCTYPE html>
-        #     <html lang="en">
-        #     <head>
-        #         <meta charset="UTF-8">
-        #         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        #         <title>Account Details Updated</title>
-        #         <style>
-        #             body {{
-        #                 font-family: Arial, sans-serif;
-        #                 background-color: #f4f4f9;
-        #                 margin: 0;
-        #                 padding: 0;
-        #             }}
-        #             .container {{
-        #                 width: 100%;
-        #                 max-width: 600px;
-        #                 margin: 0 auto;
-        #                 padding: 20px;
-        #                 background-color: #ffffff;
-        #                 border-radius: 8px;
-        #                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        #             }}
-        #             .header {{
-        #                 text-align: center;
-        #                 padding-bottom: 20px;
-        #             }}
-        #             .header h1 {{
-        #                 color: #11172b;
-        #                 font-size: 24px;
-        #             }}
-        #             .body-content {{
-        #                 font-size: 16px;
-        #                 line-height: 1.6;
-        #                 margin-bottom: 20px;
-        #             }}
-        #             .footer {{
-        #                 font-size: 14px;
-        #                 color: #777;
-        #                 text-align: center;
-        #             }}
-        #             .cta-button {{
-        #                 display: inline-block;
-        #                 padding: 10px 20px;
-        #                 background-color: #1E90FF;
-        #                 color: #ffffff;
-        #                 text-decoration: none;
-        #                 border-radius: 5px;
-        #                 font-weight: bold;
-        #             }}
-        #         </style>
-        #     </head>
-        #     <body>
-        #         <div class="container">
-        #             <div class="header">
-        #                 <h1>Account Details Updated</h1>
-        #             </div>
-        #             <div class="body-content">
-        #                 <p>Hello {admin.first_name} {admin.last_name},</p>
-        #                 <p>Your account details have been successfully updated:</p>
-        #                 <ul>
-        #                     <li><strong>Phone:</strong> {admin.phone}</li>
-        #                     <li><strong>Email:</strong> {admin.email}</li>
-        #                     <li><strong>Password:</strong> Your password has been updated.</li>
-        #                 </ul>
-        #                 <p>If you did not initiate these changes, please contact us immediately.</p>
-        #                 <p>Thank you for using Delta Bank!</p>
-        #             </div>
-        #             <div class="footer">
-        #                 <p><i>Sent on: {current_date}</i></p>
-        #             </div>
-        #         </div>
-        #     </body>
-        #     </html>
-        #     """
+        msg.html = f"""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Account Details Updated</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .container {{
+                        width: 100%;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }}
+                    .header {{
+                        text-align: center;
+                        padding-bottom: 20px;
+                    }}
+                    .header h1 {{
+                        color: #11172b;
+                        font-size: 24px;
+                    }}
+                    .body-content {{
+                        font-size: 16px;
+                        line-height: 1.6;
+                        margin-bottom: 20px;
+                    }}
+                    .footer {{
+                        font-size: 14px;
+                        color: #777;
+                        text-align: center;
+                    }}
+                    .cta-button {{
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #1E90FF;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>Account Details Updated</h1>
+                    </div>
+                    <div class="body-content">
+                        <p>Hello {admin.first_name} {admin.last_name},</p>
+                        <p>Your account details have been successfully updated:</p>
+                        <ul>
+                            <li><strong>Phone:</strong> {admin.phone}</li>
+                            <li><strong>Email:</strong> {admin.email}</li>
+                            <li><strong>Password:</strong> Your password has been updated.</li>
+                        </ul>
+                        <p>If you did not initiate these changes, please contact us immediately.</p>
+                        <p>Thank you for using Delta Bank!</p>
+                    </div>
+                    <div class="footer">
+                        <p><i>Sent on: {current_date}</i></p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
 
-        # mail.send(msg)
+        mail.send(msg)
         return jsonify({"success": "Updated successfully"}), 200
 
     elif claims.get("is_user"):
@@ -295,86 +295,86 @@ def update_info():
             if new_password:
                 user.password = new_password_hash
             db.session.commit()
-            # current_date = datetime.now().strftime("%d-%m-%Y")
-            # msg = Message('Account Details Updated', sender='david.kakhayanga@student.moringaschool.com', recipients=[email])
+            current_date = datetime.now().strftime("%d-%m-%Y")
+            msg = Message('Account Details Updated', sender='david.kakhayanga@student.moringaschool.com', recipients=[email])
 
-            # msg.html = f"""
-            # <!DOCTYPE html>
-            # <html lang="en">
-            # <head>
-            #     <meta charset="UTF-8">
-            #     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            #     <title>Account Details Updated</title>
-            #     <style>
-            #         body {{
-            #             font-family: Arial, sans-serif;
-            #             background-color: #f4f4f9;
-            #             margin: 0;
-            #             padding: 0;
-            #         }}
-            #         .container {{
-            #             width: 100%;
-            #             max-width: 600px;
-            #             margin: 0 auto;
-            #             padding: 20px;
-            #             background-color: #ffffff;
-            #             border-radius: 8px;
-            #             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            #         }}
-            #         .header {{
-            #             text-align: center;
-            #             padding-bottom: 20px;
-            #         }}
-            #         .header h1 {{
-            #             color: #11172b;
-            #             font-size: 24px;
-            #         }}
-            #         .body-content {{
-            #             font-size: 16px;
-            #             line-height: 1.6;
-            #             margin-bottom: 20px;
-            #         }}
-            #         .footer {{
-            #             font-size: 14px;
-            #             color: #777;
-            #             text-align: center;
-            #         }}
-            #         .cta-button {{
-            #             display: inline-block;
-            #             padding: 10px 20px;
-            #             background-color: #1E90FF;
-            #             color: #ffffff;
-            #             text-decoration: none;
-            #             border-radius: 5px;
-            #             font-weight: bold;
-            #         }}
-            #     </style>
-            # </head>
-            # <body>
-            #     <div class="container">
-            #         <div class="header">
-            #             <h1>Account Details Updated</h1>
-            #         </div>
-            #         <div class="body-content">
-            #             <p>Hello {user.first_name } {user.last_name},</p>
-            #             <p>Your account details have been successfully updated:</p>
-            #             <ul>
-            #                 <li><strong>Phone:</strong> {user.phone}</li>
-            #                 <li><strong>Email:</strong> {user.email}</li>
-            #                 <li><strong>Password:</strong> Your password has been updated.</li>
-            #             </ul>
-            #             <p>If you did not initiate these changes, please contact us immediately.</p>
-            #             <p>Thank you for using Delta Bank!</p>
-            #         </div>
-            #         <div class="footer">
-            #             <p><i>Sent on: {current_date}</i></p>
-            #         </div>
-            #     </div>
-            # </body>
-            # </html>
-            # """
+            msg.html = f"""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Account Details Updated</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .container {{
+                        width: 100%;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }}
+                    .header {{
+                        text-align: center;
+                        padding-bottom: 20px;
+                    }}
+                    .header h1 {{
+                        color: #11172b;
+                        font-size: 24px;
+                    }}
+                    .body-content {{
+                        font-size: 16px;
+                        line-height: 1.6;
+                        margin-bottom: 20px;
+                    }}
+                    .footer {{
+                        font-size: 14px;
+                        color: #777;
+                        text-align: center;
+                    }}
+                    .cta-button {{
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #1E90FF;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>Account Details Updated</h1>
+                    </div>
+                    <div class="body-content">
+                        <p>Hello {user.first_name } {user.last_name},</p>
+                        <p>Your account details have been successfully updated:</p>
+                        <ul>
+                            <li><strong>Phone:</strong> {user.phone}</li>
+                            <li><strong>Email:</strong> {user.email}</li>
+                            <li><strong>Password:</strong> Your password has been updated.</li>
+                        </ul>
+                        <p>If you did not initiate these changes, please contact us immediately.</p>
+                        <p>Thank you for using Delta Bank!</p>
+                    </div>
+                    <div class="footer">
+                        <p><i>Sent on: {current_date}</i></p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
 
-            # mail.send(msg)
+            mail.send(msg)
             return jsonify({"success": "Updated successfully"}), 200
     else:
         return jsonify({"error": "Details Not Updated"}), 406
