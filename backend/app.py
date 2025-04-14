@@ -23,7 +23,7 @@ app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://deltabank_user:kObACloPFGG9DKpIjIonWUTlAFxYRkPk@dpg-cufi9ljtq21c73f6asg0-a.oregon-postgres.render.com/deltabank'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://deltabankdb_rgxh_user:nmo0hmbUgnXsSsI4pJcP6JsCajiygWBt@dpg-cvubfj7gi27c73agotag-a.oregon-postgres.render.com/deltabankdb_rgxh'
 migrate = Migrate(app, db)
 db.init_app(app)
 

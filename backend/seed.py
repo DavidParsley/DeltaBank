@@ -73,19 +73,15 @@ with app.app_context():
     # users.append(Users(first_name="Blessed", last_name="Wesonga", email="blessed.wesonga@student.moringaschool.com", phone=1234567837, password=generate_password_hash(password)))
 
     
-
-
-
-    
     # Loans seeds
     loans.append(Loans(amount=5000000, interest_rate=1.2, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-20", "%Y-%m-%d").date(), loan_status="Active", user_id=1))
     loans.append(Loans(amount=6000000, interest_rate=1.5, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-21", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
-    # loans.append(Loans(amount=7500000, interest_rate=1.3, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-22", "%Y-%m-%d").date(), loan_status="Paid", user_id=3))
-    # loans.append(Loans(amount=4500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-23", "%Y-%m-%d").date(), loan_status="Active", user_id=4))
-    # loans.append(Loans(amount=9000000, interest_rate=1.2, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-24", "%Y-%m-%d").date(), loan_status="Active", user_id=5))
-    # loans.append(Loans(amount=3200000, interest_rate=1.6, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-25", "%Y-%m-%d").date(), loan_status="Paid", user_id=3))
-    # loans.append(Loans(amount=4000000, interest_rate=1.5, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-26", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
-    # loans.append(Loans(amount=8500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-27", "%Y-%m-%d").date(), loan_status="Active", user_id=4))
+    loans.append(Loans(amount=7500000, interest_rate=1.3, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-22", "%Y-%m-%d").date(), loan_status="Paid", user_id=1))
+    loans.append(Loans(amount=4500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-23", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
+    loans.append(Loans(amount=9000000, interest_rate=1.2, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-24", "%Y-%m-%d").date(), loan_status="Active", user_id=1))
+    loans.append(Loans(amount=3200000, interest_rate=1.6, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-25", "%Y-%m-%d").date(), loan_status="Paid", user_id=1))
+    loans.append(Loans(amount=4000000, interest_rate=1.5, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-26", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
+    loans.append(Loans(amount=8500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-27", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
     # loans.append(Loans(amount=1000000, interest_rate=1.3, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-28", "%Y-%m-%d").date(), loan_status="Active", user_id=5))
     # loans.append(Loans(amount=7000000, interest_rate=1.6, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-29", "%Y-%m-%d").date(), loan_status="Paid", user_id=5))
     # loans.append(Loans(amount=5500000, interest_rate=1.4, start_date=datetime.strptime("20/01/2025", "%d/%m/%Y").date(), due_date=datetime.strptime("2026-01-30", "%Y-%m-%d").date(), loan_status="Active", user_id=2))
