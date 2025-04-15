@@ -39,6 +39,10 @@ app.register_blueprint(user_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(loan_bp)
 
+@app.get('/')
+def index():
+    return {"messeage": "Welcome to DeltaBank"}
+
 @jwt.token_in_blocklist_loader
 def check_if_token_revoked(jwt_header, jwt_payload: dict) -> bool:
     jti = jwt_payload["jti"]
