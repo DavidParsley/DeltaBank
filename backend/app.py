@@ -39,7 +39,7 @@ app.register_blueprint(user_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(loan_bp)
 
-@app.get('/')
+@app.get('/status')
 def index():
     return {"messeage": "Welcome to DeltaBank"}
 
